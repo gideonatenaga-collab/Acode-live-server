@@ -73,7 +73,7 @@ Special thanks to:
 
 ## Contributions
 
-This plugin is open source at </a href="https://github.com/hackesofice/Acode-live-server.git"> hear </a> 
+This plugin is open source at <a href="https://github.com/hackesofice/Acode-live-server.git"> hear </a> 
 We welcome all contributions. Please ensure you include proper information in your pull request.
 
 > **Note**  

@@ -2,6 +2,9 @@
 
 This is a simple plugin that provides **live preview functionality** for HTML/frontend developers—just like the Live Server in VS Code (desktop). It allows you to see your work live inside the Acode app.
 
+[![Typing SVG](https://readme-typing-svg.demolab.com?font=Fira+Code&weight=700&duration=4000&pause=1000&center=true&vCenter=true&width=435&lines=HEY+DEAR+WELCOME+TO+THE+REPOSITORY+;PLEASE+DON'T+FORGET+TO+STAR+%E2%AD%90+US;REPORT+FOR+ANY+ISSUES+;FOLLOW+US+ON+YOUTUBE;DOWNLOAD+UNLIMITED+SONGS+)](https://git.io/typing-svg)
+
+
 > **Warning ⚠️**  
 > This plugin requires the **Termux app** as a backend server to function properly.
 

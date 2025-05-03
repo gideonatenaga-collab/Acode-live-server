@@ -1,6 +1,6 @@
 
 <p align="center">
-  <a src="https://acode.app/plugin/liveserver"</a>
+  <a href="https://acode.app/plugin/liveserver"</a>
   <img src="/icon.png" alt="Live Server img">
 </p>
 

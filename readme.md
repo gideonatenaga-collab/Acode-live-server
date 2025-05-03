@@ -1,4 +1,8 @@
-![[icon png](https://acode.app/plugin/liveserver)](/icon.png)
+
+<p align="center">
+  <a href="https://acode.app/plugin/liveserver"</a>
+  <img src="/icon.png" alt="Live Server img">
+</p>
 
 # DECLAIMER 
 

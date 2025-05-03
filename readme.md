@@ -1,3 +1,4 @@
+![[icon png](https://acode.app/plugin/liveserver)](/icon.png)
 # DECLAIMER 
 
 This is a simple plugin that provides **live preview functionality** for HTML/frontend developers—just like the Live Server in VS Code (desktop). It allows you to see your work live inside the Acode app.

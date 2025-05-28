@@ -1,7 +1,7 @@
 
 <p align="center">
   <a href="https://acode.app/plugin/liveserver"</a>
-  <img src="/icon.png" alt="Live Server img">
+  <img src="https://raw.githubusercontent.com/hackesofice/Acode-live-server/refs/heads/main/icon.png" alt="Live Server img">
 </p>
 
 # DISCLAIMER

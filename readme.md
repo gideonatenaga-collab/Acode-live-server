@@ -1,10 +1,10 @@
 
 <p align="center">
-  <a href="https://acode.app/plugin/liveserver"</a>
+  <a href="https://acode.app/plugin/liveserver"></a>
   <img src="https://raw.githubusercontent.com/hackesofice/Acode-live-server/refs/heads/main/icon.png" alt="Live Server img">
 </p>
 
-# DISCLAIMER
+# DISCLAIMER 
 
 This is a simple plugin that provides **live preview functionality** for HTML/frontend developers—just like the Live Server in VS Code (desktop). It allows you to see your work live inside the Acode app.
 
@@ -29,7 +29,7 @@ This is a simple plugin that provides **live preview functionality** for HTML/fr
 
 ### Frontend (Acode App)
 
-1. Install the **Acode app** from the Google Play Store.
+1. Install the <a href="https://play.google.com/store/apps/details?id=com.foxdebug.acodefree">**Acode app**</a> from the Google Play Store.
 2. Tap the **menu** icon in the top-left corner.
 3. Tap the **Extensions** icon.
 4. Search for **Live Server** in the search bar.
@@ -88,3 +88,4 @@ We welcome all contributions. Please ensure you include proper information in yo
 
 > **Note**  
 > If you encounter any issues, please open an issue on our GitHub page.
+> 

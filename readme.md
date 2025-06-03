@@ -15,7 +15,6 @@
         <a href="https://github.com/hackesofice/Acode-live-server/issues?q=is%3Aissue+is%3Aclosed">
           <img alt="Closed Issues" src="https://img.shields.io/github/issues-closed/hackesofice/Acode-live-server?style=for-the-badge&color=3cb371&logo=checkmarx">
         </a>
-
       
     <img src="https://media.giphy.com/media/l2JHRhAtnJSDNJ2py/giphy.gif" height="25">
     <a href="https://github.com/hackesofice/Acode-live-server/stargazers">

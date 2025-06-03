@@ -49,6 +49,9 @@ This is a simple plugin that provides **live preview functionality** for HTML/fr
 ---
 
 ## Features
+- Live preview for HTML, CSS, and JavaScript
+- Auto reload on file save
+- Designed for Acode editor (Android)
 
 > **Note**  
 > This plugin is under active development. You may encounter occasional bugs or missing features, but we are working hard to improve it and reach 100% stability.

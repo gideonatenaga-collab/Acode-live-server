@@ -1,19 +1,10 @@
 
 <p align="center">
   <a href="https://acode.app/plugin/liveserver"></a>
-  <img src="https://raw.githubusercontent.com/hackesofice/Acode-live-server/refs/heads/main/icon.png" alt="Live Server img">
-</p>
-
-
-<p align="center">
-  <img src="https://media.giphy.com/media/3oriO0OEd9QIDdllqo/giphy.gif" width="50" height="50" alt="Rocket"/>
+  <img src="/icon.png" alt="">
 </p>
 
 ![](https://readme-typing-svg.demolab.com?font=Fira+Code&size=22&duration=3000&pause=1000&color=C084FC&center=true&vCenter=true&width=435&lines=🚀+Acode+Live+Server+Plugin+by+Hackesofice;💻+Live+Preview+for+HTML+on+Android;🌐+Open+Source+and+Free+Forever!)
-
-<p align="center">
-  <img src="https://media.giphy.com/media/26AHONQ79FdWZhAI0/giphy.gif" width="50" height="50" alt="Coder"/>
-</p>
 
 
 

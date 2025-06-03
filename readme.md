@@ -4,7 +4,7 @@
   <img src="/icon.png" alt="">
 </p>
 
-![](https://readme-typing-svg.demolab.com?font=Fira+Code&size=32&duration=3000&pause=1000&color=C084FC&center=true&vCenter=true&width=705&lines=🚀+Acode+Live+Server+Plugin+by+Hackesofice;💻+Live+Preview+for+HTML+on+Android;🌐+Open+Source+and+Free+Forever!)
+![](https://readme-typing-svg.demolab.com?font=Fira+Code&size=30&duration=3000&pause=1000&color=C084FC&center=true&vCenter=true&width=705&lines=🚀+Acode+Live+Server+Plugin+by+Hackesofice;💻+Live+Preview+for+HTML+on+Android;🌐+Open+Source+and+Free+Forever!)
 
 
 

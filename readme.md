@@ -4,9 +4,24 @@
   <img src="https://raw.githubusercontent.com/hackesofice/Acode-live-server/refs/heads/main/icon.png" alt="Live Server img">
 </p>
 
-# DISCLAIMER 
+### 👐 Open Source & Transparency
 
-This is a simple plugin that provides **live preview functionality** for HTML/frontend developers—just like the Live Server in VS Code (desktop). It allows you to see your work live inside the Acode app.
+This plugin is fully **open source** and publicly available at  
+[https://github.com/hackesofice/Acode-live-server](https://github.com/hackesofice/Acode-live-server).  
+It is maintained independently to promote **transparency**, **user freedom**, and **community contribution**.  
+You're welcome to inspect, modify, or improve the code as needed.
+
+---
+
+### ⚠️ Disclaimer
+
+> This plugin is developed and maintained by an independent developer and is **not officially affiliated with or endorsed by the Acode app team** or its parent company.  
+>  
+> Use this plugin at your own risk. While every effort has been made to ensure its safety and reliability, the developer is **not responsible for any data loss, app malfunction, or system issues** arising from its use.  
+>  
+> For questions, feedback, or bug reports, please open an issue at the [GitHub Issues page](https://github.com/hackesofice/Acode-live-server/issues).
+
+
 
 [![Typing SVG](https://readme-typing-svg.demolab.com?font=Fira+Code&weight=700&duration=4000&pause=1000&center=true&vCenter=true&width=435&lines=HEY+DEAR+WELCOME+TO+THE+REPOSITORY+;PLEASE+DON'T+FORGET+TO+STAR+%E2%AD%90+US;REPORT+FOR+ANY+ISSUES+;FOLLOW+US+ON+YOUTUBE;USE+100%+FREE+)](https://git.io/typing-svg)
 

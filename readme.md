@@ -9,9 +9,7 @@
   <img src="https://media.giphy.com/media/3oriO0OEd9QIDdllqo/giphy.gif" width="50" height="50" alt="Rocket"/>
 </p>
 
-<p align="center">
-  <img src="https://readme-typing-svg.demolab.com?font=Fira+Code&size=22&duration=3000&pause=1000&color=C084FC&center=true&vCenter=true&width=435&lines=🚀+Acode+Live+Server+Plugin+by+Hackesofice;💻+Live+Preview+for+HTML+on+Android;🌐+Open+Source+and+Free+Forever!" alt="Typing SVG"/>
-</p>
+![](https://readme-typing-svg.demolab.com?font=Fira+Code&size=22&duration=3000&pause=1000&color=C084FC&center=true&vCenter=true&width=435&lines=🚀+Acode+Live+Server+Plugin+by+Hackesofice;💻+Live+Preview+for+HTML+on+Android;🌐+Open+Source+and+Free+Forever!)
 
 <p align="center">
   <img src="https://media.giphy.com/media/26AHONQ79FdWZhAI0/giphy.gif" width="50" height="50" alt="Coder"/>

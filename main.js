@@ -18,6 +18,7 @@
         "minVersionCode": 290,
         "license": "",
         "changelogs": "changelogs.md",
+         "repository":"https://github.com/hackesofice/Acode-live-server.git",
         "keywords": ["Live Server", "live", "HTML Viewer"],
         "price": 0,
         "author": {

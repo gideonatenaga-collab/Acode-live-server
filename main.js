@@ -11,7 +11,7 @@
         "id": "liveserver",
         "name": "Live Server",
         "main": "main.js",
-        "version": "1.1.2",
+        "version": "1.1.3",
         "readme": "readme.md",
         "icon": "icon.png",
         "files": [],

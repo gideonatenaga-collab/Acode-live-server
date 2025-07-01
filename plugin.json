@@ -2,7 +2,7 @@
   "id":"liveserver",
   "name":"Live Server",
   "main":"main.js",
-  "version":"1.1.2",
+  "version":"1.1.3",
   "readme":"readme.md",
   "icon":"icon.png",
   "files":[],
@@ -11,6 +11,7 @@
   "changelogs":"changelogs.md",
   "keywords":["Live Server","live","HTML Viewer"],
   "price":0,
+  "repository":"https://github.com/hackesofice/Acode-live-server.git",
   "author":{
     "name":"HACKESOFICE",
     "email":"hackesofice@gmail.com",

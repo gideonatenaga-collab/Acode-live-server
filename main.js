@@ -8,23 +8,23 @@
 
     let oldSetting = settings.get('autosave') /// needs menimum valur 1000 mili seconds
     var e = {
-        "id": "liveserver",
-        "name": "Live Server",
-        "main": "main.js",
-        "version": "1.1.3",
-        "readme": "readme.md",
-        "icon": "icon.png",
-        "files": [],
-        "minVersionCode": 290,
-        "license": "",
-        "changelogs": "changelogs.md",
-         "repository":"https://github.com/hackesofice/Acode-live-server.git",
-        "keywords": ["Live Server", "live", "HTML Viewer"],
-        "price": 0,
-        "author": {
-            "name": "HACKESOFICE",
-            "email": "hackesofice@gmail.com",
-            "github": "hackesofice"
+        "id":"liveserver",
+        "name":"Live Server",
+        "main":"main.js",
+        "version":"1.1.3",
+        "readme":"readme.md",
+        "icon":"icon.png",
+        "files":[],
+        "minVersionCode":290,
+        "license":"",
+        "changelogs":"changelogs.md",
+        "keywords":["Live Server","live","HTML Viewer"],
+        "price":0,
+        "repository":"https://github.com/hackesofice/Acode-live-server.git",
+        "author":{
+            "name":"HACKESOFICE",
+            "email":"hackesofice@gmail.com",
+            "github":"hackesofice"
         }
     }
     class LiveServer {

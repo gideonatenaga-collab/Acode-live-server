@@ -5,42 +5,75 @@
     let settings = acode.require('settings');
     let SideButton = acode.require('sideButton');
     var jsonData = {}; //lets initiolize it empty well ad the things further
+    const editorFile = acode.require('editorFile');
+    acode.addIcon('full-screen', 'https://ibb.co/knfL8D9');
 
     let oldSetting = settings.get('autosave') /// needs menimum valur 1000 mili seconds
     var e = {
-        "id":"liveserver",
-        "name":"Live Server",
-        "main":"main.js",
-        "version":"1.1.3",
-        "readme":"readme.md",
-        "icon":"icon.png",
-        "files":[],
-        "minVersionCode":290,
-        "license":"",
-        "changelogs":"changelogs.md",
-        "keywords":["Live Server","live","HTML Viewer"],
-        "price":0,
-        "repository":"https://github.com/hackesofice/Acode-live-server.git",
-        "author":{
-            "name":"HACKESOFICE",
-            "email":"hackesofice@gmail.com",
-            "github":"hackesofice"
+        "id": "liveserver",
+        "name": "Live Server",
+        "main": "main.js",
+        "version": "2.0.0",
+        "readme": "readme.md",
+        "icon": "icon.png",
+        "files": [],
+        "minVersionCode": 290,
+        "license": "",
+        "changelogs": "changelogs.md",
+        "keywords": ["Live Server", "live", "HTML Viewer"],
+        "price": 0,
+        "repository": "https://github.com/hackesofice/Acode-live-server.git",
+        "author": {
+            "name": "HACKESOFICE",
+            "email": "hackesofice@gmail.com",
+            "github": "hackesofice"
         }
     }
+
     class LiveServer {
         //// ill improve the destroyesr further
-        constructor () {
+        constructor() {
             this.port = null;
-            this.reloadFile = () => {
-                let iframe = document.getElementById('iframe');
-                if (iframe) {
-                    iframe.src = `http://localhost:${jsonData.port}/${jsonData.fileName}`;
-                }
-            }
+            this.isBigScreenEnabled = false;
+            this.isServerOnline = false;
+
         }
 
         async init() {
             console.log("LiveServerPlugin initialized!");
+            // settings.update({
+            //     "Live-Server":{
+            //         "status": true,
+            //         "mode": "short"
+            //     }
+            // })
+            this.reloadFile = () => {
+                try {
+                    let iframe = document.getElementById('iframe');
+                    if (iframe) {
+                        iframe.src = `http://localhost:${jsonData.port}/${jsonData.fileName}`;
+                    }
+                } catch (err) {
+                    console.log(`Live server error ${err}`);
+                }
+            }
+            let BigScreenContent = document.createElement('div');
+            BigScreenContent.style.cssText = `
+            height:100%;
+            border: 2px solid black;
+            border-radius: 5px;
+            `;
+            var iframe22 = document.createElement('iframe');
+            iframe22.className = 'iframe22';
+            iframe22.style.cssText = `
+               height:90%;
+               width: 90%;
+               margin:5% 5% 5% 5%;
+               border-radius:5px;
+            `;
+            BigScreenContent.appendChild(iframe22);
+            this.BigScreenContent = BigScreenContent;
+
             this.openWindow = () => {
                 //   console.log('clicked');
                 if (!document.getElementById("live-server-window")) {
@@ -64,24 +97,30 @@
                 } else if (this.liveServerButton) {
                     this.liveServerButton.hide();
                 }
-
             }
             this.showOrHideIFhtml();
-            
-            
-            
+
             ///////////////////////////////////////////////////////////////////
             ///INITILIZING ALL EVENT Listeners///////
-            editorManager.on('save-file', () => {
-                ///i have to move it to an seprate function so that it will only listen when its actually needed its efficient use of resources
-                ///ill update it later its forcing the windo to relode
-                this.reloadFile();
-            });
+            // editorManager.on('save-file', () => {
+            //     ///i have to move it to an seprate function so that it will only listen when its actually needed its efficient use of resources
+            //     ///ill update it later its forcing the windo to relode
+            //     this.reloadFile();
+            // });
 
             editorManager.on('switch-file', () => {
                 this.showOrHideIFhtml();
             });
-
+            var iframe2 = document.createElement('iframe');
+            iframe2.className = "iframe";
+            iframe2.id = "iframe2";
+            iframe2.style.cssText = `
+                        top:0px;
+                        right:0px;
+                        left:0px;
+                        bottom:0px
+                        border:5px solid green;
+                    `;
 
             //////////////////////////////////////////////////////////
             ///coading for UI or frontend
@@ -95,6 +134,19 @@
                 }
 
                 ////// button for hiding and showing
+                let iframe = document.createElement('iframe');
+                iframe.id = 'iframe';
+                iframe.className = 'iframe';
+                iframe.style.cssText = `
+                    right:0;
+                    left:0;
+                    bottom:0;
+                    border: 1px solid black;
+                    height: 100%;
+                    width: 100%;
+                    box-shadow: 0px 0px 10px rgba(0.0.0.0.50);
+                    `;
+                //)//////////////////////////////////////////////////////
                 document.getElementById("live-server-window")?.remove();
                 let windowDiv = document.createElement('div');
                 windowDiv.id = "live-server-window";
@@ -156,6 +208,14 @@
                     margin-right:0;
                    `;
 
+                let maxFullScreen = document.createElement('button');
+                maxFullScreen.className = 'icon googlechrome';
+                maxFullScreen.id = 'maxFullScreen';
+                maxFullScreen.onclick = addBigScreenPage;
+                maxFullScreen.style = `
+                           margin-right: 10px;
+                        `
+
                 // Horizomtal rule
                 let hrTag = document.createElement('hr');
                 hrTag.style.cssText = `
@@ -171,22 +231,6 @@
                     border: 1px solid black;
                     height: 100%;
                     width: 100%;
-                    `;
-
-                //iframe for rendering
-                let iframe = document.createElement('iframe');
-                iframe.id = 'iframe';
-                iframe.className = 'iframe';
-                //    iframe.src = '';
-                iframe.style.cssText = `
-                    right:0;
-                    left:0;
-                    bottom:0;
-                    border: 1px solid black;
-                    height: 100%;
-                    width: 100%;
-                    box-shadow: 0px 0px 10px rgba(0.0.0.0.50);
-    
                     `;
 
                 ///close the serve(clint)
@@ -209,12 +253,12 @@
                 // Resizing Logic for Touch & Mouse
                 let isResizing = false;
                 let startY,
-                startHeight;
+                    startHeight;
 
                 function startResize(event) {
                     // console.log("Resizing started!");
                     isResizing = true;
-                    let touch = event.touches ? event.touches[0]: event;
+                    let touch = event.touches ? event.touches[0] : event;
                     startY = touch.clientY;
                     startHeight = windowDiv.offsetHeight;
                     document.body.style.userSelect = "none";
@@ -222,7 +266,7 @@
 
                 function performResize(event) {
                     if (!isResizing) return;
-                    let touch = event.touches ? event.touches[0]: event;
+                    let touch = event.touches ? event.touches[0] : event;
                     let newHeight = startHeight + (startY - touch.clientY);
                     // console.log("New Height:", newHeight);
                     if (newHeight >= 100 && newHeight <= window.innerHeight * 0.9) {
@@ -247,17 +291,17 @@
                 // Append im ui
                 titleBar.appendChild(minimizeButton);
                 titleBar.appendChild(closeButton);
+                titleBar.appendChild(maxFullScreen);// now we will add it if the server is connected
                 windowDiv.appendChild(titleBar);
                 windowDiv.appendChild(hrTag);
-                //    windowDiv.appendChild(iframe);
+                // windowDiv.appendChild(iframe);
                 main_screen.appendChild(iframe);
                 windowDiv.appendChild(main_screen);
                 // document.querySelector('.editor-container').appendChild(windowDiv);
                 /// for now lets add it directly on body editor-container
                 document.body.appendChild(windowDiv);
-                // document.body.appendChild(maximizeButton);
+                //document.body.appendChild(maximizeButton);
                 //console.log("Live Server Window added!");
-
                 handleTheBackend();
             }// endimg of open window function
 
@@ -267,6 +311,7 @@
             ///// now start the backend such as defining the differebt typws of variables like getting the file name etc and before UI loading prepare for it like connection with the server etc
             /////// copied this logic from acodex terminal (,by bajrang coarder)
             function resolvePath(rawPath) {
+               // alert(baseUrl);
                 if (rawPath.startsWith("content://com.termux.documents/tree")) {
                     const path = rawPath.split("::")[1];
                     const trimmed = path.substring(0, path.lastIndexOf("/"));
@@ -293,9 +338,9 @@
                 let savedFilePath = null;
                 let cacheFilePath = null;
                 let ActiveFile = null;
-                let ActiveFileType = null;
+                //let ActiveFileType = null;
                 ActiveFile = editorManager.activeFile; //returns the object
-                ActiveFileType = editorManager.activeFile.session.$modeId; //returns the file type like its a javaacript or html or something
+                //ActiveFileType = editorManager.activeFile.session.$modeId; //returns the file type like its a javaacript or html or something
                 savedFilePath = ActiveFile.uri; //the ActiveFile is instance of inbuilt editorManager API
                 cacheFilePath = ActiveFile.cacheFile;
 
@@ -317,7 +362,7 @@
                             jsonData.fileName = fileName;
                             if (!jsonData.port) {
                                 (async () => {
-                                    let livePort = await getLivePortIfAvilable();
+                                    let livePort = await getLivePortIfAvailable();
                                     if (livePort) {
                                         console.log(`live port gotten its ${livePort}`)
                                         jsonData.port = livePort;
@@ -332,7 +377,6 @@
                                 checkServer(jsonData);
                             }
                         }
-
                     } else if (cacheFilePath) {
                         alert('the file you wanna run its unsaved file please save it')
                         const btn = document.getElementById('closeButton');
@@ -382,11 +426,24 @@
                 document.getElementById('maximizeButton').style.display = 'none';
             }
 
-            //////////// SOME RAW FUNCTIONS
 
             function isHTMLFile() {
-                let ActiveFileType = editorManager.activeFile.session.$modeId;
-                return ActiveFileType === 'ace/mode/html';
+                // console.log(editorManager);
+                if (
+                    editorManager &&
+                    editorManager.activeFile &&
+                    editorManager.activeFile.session &&
+                    editorManager.activeFile.session.$modeId
+                ) {
+                    // console.log('inside if html file function and session is tfuthy')
+                    const ActiveFileType = editorManager.activeFile.session.$modeId;
+                    if (ActiveFileType) {
+                        return ActiveFileType === 'ace/mode/html';
+                    }
+                } else {
+                    //   console.log('inside if html file function and session is falsy')
+                    return false;
+                }
             }
 
             async function checkServer(jsonData) {
@@ -405,7 +462,7 @@
                     });
                     clearTimeout(timeoutId);
                     if (!response || !response.ok) {
-                        console.log('unable to connect server')
+                        console.log('unable to connect server');
                         //throw new Error(`Server error: ${response.status}`);
                         return;
                     }
@@ -416,7 +473,7 @@
                         if (iframe) {
                             iframe.src = `http://localhost:${jsonData.port}/`;
                         }
-                    },1000);
+                    }, 1000);
                 } catch (error) {
                     if (error.name === 'AbortError') {
                         console.error('Fetch request timed out');
@@ -428,181 +485,140 @@
             }
 
             function showDefaultWindow() {
-                const iframe = document.querySelector('#iframe');
-                if (iframe) {
-                    const default_content = `
-                    <style>
-                    * {
-                       box-sizing: border-box;
-                       font-family: 'Courier New', monospace;
-                     }
+                //console.log(navigator.onLine)
+                const iframes = document.querySelectorAll('iframe.iframe');
+                //    console.log(iframes)
+                if (iframes.length > 0) {
+                    let i = -1;
+                    while (i < iframes.length) {
+                        const default_content = `
+                                        <body> 
+                                            <h1> server status = off </h1>
+                                            <h1> Phone Network status = off </h1>
+    
+                                        </body> 
+                                `;
+                        // console.log(iframes)
+                        try { 
+                             // returns true/false based on data connection
+                            if (navigator.onLine) {
+                                let iframe = document.getElementById('iframe');
+                                if (iframe) {
+                                    iframe.src = 'https://acode-live-server-documentations.vercel.app/';
+                                }
+                                if (iframe22) {
+                                    iframe22.src = 'https://acode-live-server-documentations.vercel.app/';
+                                } else {
+                                    console.warn("can not able to find the iframe22");
+                                }
+                            } else {
+                                let iframe = document.getElementById('iframe');
+                                if (iframe) {
+                                    iframe.contentWindow.document.body.innerHTML = default_content;
+                                    setTimeout(() => {
+                                        const btn = document.getElementById('closeButton')
+                                        const miniRedLiveButton = document.getElementById('maximizeButton')
 
-                    body {
-                         margin: 0;
-                         height: 100vh;
-                         background: radial-gradient(ellipse at center, #0f0f0f 0%, #000000 100%);
-                         color: #00ffcc;
-                         display: flex;
-                         justify-content: center;
-                         align-items: center;
-                         overflow: hidden;
-                      }
+                                        //Remove the red live button before removing thr resizable window
+                                        if (miniRedLiveButton) {
+                                            miniRedLiveButton.style.display = 'none'
+                                        }
+                                        if (btn) {
+                                            btn.click()
+                                        }
 
-                    .terminal {
-                        text-align: center;
-                        padding: 30px;
-                     }
+                                    }, 10000);
+                                }
+                                if (iframe22) {
+                                    iframe22.contentWindow.document.body.innerHTML = default_content;
+                                }else {
+                                  console.log("iframe22 doesnt exists");
+                                }
 
-                    h1 {
-                       font-size: 32px;
-                       text-shadow: 0 0 5px #00ffcc, 0 0 10px #00ffcc;
-                       animation: glitch 1s infinite;
-                    }
+                            }
 
-                    p {
-                        margin-top: 15px;
-                        font-size: 18px;
-                        opacity: 0.8;
-                     }
-
-                    .retry-btn {
-                        margin-top: 30px;
-                        padding: 14px 30px;
-                        font-size: 16px;
-                        color: #000;
-                        background: #00ffcc;
-                        border: none;
-                        border-radius: 8px;
-                        cursor: pointer;
-                        box-shadow: 0 0 10px #00ffcc, 0 0 20px #00ffcc;
-                        transition: 0.3s ease;
-                    }
-
-                    .retry-btn:hover {
-                        background: #00e6b8;
-                        box-shadow: 0 0 15px #00e6b8, 0 0 30px #00e6b8;
-                    }
-
-                    @keyframes glitch {
-                       0% {
-                          transform: translate(0);
+                        } catch (error) {
+                            console.error(`erro gotten ${error}`)
                         }
-                        20% {
-                          transform: translate(-1px, 1px);
-                       }
-                      40% {
-                       transform: translate(-1px, -1px);
-                        }
-                      60% {
-                           transform: translate(1px, 1px);
-                       }
-                       80% {
-                            transform: translate(1px, -1px);
-                       }
-                       100% {
-                           transform: translate(0);
-                        }
+                        i++;
                     }
-
-                    .matrix-lines {
-                       position: absolute;
-                       width: 100%;
-                       height: 100%;
-                       overflow: hidden;
-                       top: 0;
-                       left: 0;
-                       pointer-events: none;
-                    }
-
-                    .matrix-lines::before {
-                       content: '';
-                       position: absolute;
-                       top: -100%;
-                       left: 50%;
-                       width: 2px;
-                       height: 200%;
-                       background: linear-gradient(to bottom, transparent, #00ffcc, transparent);
-                       animation: scrollDown 3s linear infinite;
-                       opacity: 0.3;
-                    }
-
-                    @keyframes scrollDown {
-                       0% {
-                          top: -100%;
-                        }
-                       100% {
-                          top: 100%;
-                       }
-                    }
-                    </style>
-                    <body>
-                        <div class="matrix-lines"></div>
-                        <div class="terminal">
-                        <h1>!! SERVER OFFLINE !!</h1>
-                        <p>Please open the termux and run server, for now its only way to use it but we are working to improve it</p>
-                        <button class="retry-btn" onclick="retry()">RETRY</button>
-                    </div>
-
-                    <script>
-                        function retry() {
-                           location.reload();
-                        }
-                    </script>
-                    </body>
-                    `;
-
-                    iframe.contentWindow.document.body.innerHTML = default_content;
-                    setTimeout(() => {
-                        const btn = document.getElementById('closeButton')
-                        const miniRedLiveButton = document.getElementById('maximizeButton')
-                        
-                        //Remove the red live button before removing thr resizable window
-                        if (miniRedLiveButton){
-                            miniRedLiveButton.style.display = 'none'
-                        }
-                        if (btn) {
-                            btn.click()
-                        }
-                        
-                    },10000);
+                } else {
+                    console.error('cant find any iframe');
                 }
-
             }
 
-            async function getLivePortIfAvilable(timeout = 1000) {
-                let portList = [1024, 1025, 1026, 1027, 1028, 1029, 1030, 1031, 1032, 1033, 1034];
-                for (let port of portList) {
+            async function getLivePortIfAvailable(timeout = 1000) {
+                const portList = [1024, 1025, 1026, 1027, 1028, 1029, 1030, 1031, 1032, 1033, 1034];
+
+                for (const port of portList) {
                     const controller = new AbortController();
                     const signal = controller.signal;
 
-                    // Set a timeout to abort the fetch
-                    const timer = setTimeout(() => {
-                        controller.abort();
-                    }, timeout);
+                    // Set timeout to abort fetch
+                    const timer = setTimeout(() => controller.abort(), timeout);
 
                     try {
                         const response = await fetch(`http://localhost:${port}/check`, {
                             method: 'GET',
                             signal: signal
                         });
-                        clearTimeout(timer);
 
+                        clearTimeout(timer); // Clear timer on success/failure
                         if (response.ok) {
-                            return port;
+                            this.isServerOnline = true;
+                            return port; // Return live port
                         }
                     } catch (err) {
-                        clearTimeout(timer);
-                //        console.log(`Port ${port} failed or timed out:`, err.message);
-                     //   console.clear()
+                        clearTimeout(timer); //clear timer
                     }
                 }
-                return null;
+
+                return null; // No live port found
             }
 
-        }// cloasing of init function
+
+            ////////////////////))/))////ll/)//////////////
+            // COADING FOR BIG SCREEN
+            function addBigScreenPage() {
+                
+                if (!this.reloadBigScreen){
+                    this.reloadBigScreen = (() => {
+                        const iframe3 = BigScreenContent.querySelector("iframe.iframe22");
+                        if (this.isServerOnline){
+                            iframe3.src = `http://localhost:${jsonData.port}`;
+                        }else {
+                            iframe3.contentWindow.document.body.innerHTML = `
+                                    hello brother server is off
+                                `;
+                        }
+                    });
+                }
+                
+                if (!this.isBigScreenEnabled){
+                    const bigScreen = new editorFile('Live Server', {
+                        type: 'page',
+                        render: true,
+                        content: BigScreenContent,
+                        tabIcon: "icon googlechrome",
+                    });
+                    this.isBigScreenEnabled = true;
+                    editorManager.on("save-file", this.reloadBigScreen);
+                    
+                    bigScreen.on('close', () => {
+                        this.isBigScreenEnabled = false;
+                        editorManager.off("save-file", this.reloadBigScreen);
+                    });
+                }
+              
+                
+                
+            }
+
+        }// cloasing of init functio9n
 
         async destroy() {
             console.log('destroyed');
+            console.log(this);
             document.getElementById('live-server-window')?.remove();
             if (this.liveServerButton) {
                 this.liveServerButton.hide();
@@ -611,12 +627,12 @@
             if (this.reloadFile) {
                 editorManager.off('save-file', this.reloadFile);
             } else {
-                console.log('this.reloadFileisnt defined');
+                console.warn('this.reloadFileisnt defined');
             }
             if (this.showOrHideIFhtml) {
                 editorManager.off('switch-file', this.showOrHideIFhtml);
             } else {
-                console.log('this.showOrHideIFhtml not defined')
+                console.warn('this.showOrHideIFhtml not defined')
             }
             document.getElementById('maximizeButton')?.remove();
             if (settings) {
@@ -624,10 +640,16 @@
                     autosave: oldSetting
                 });
             }
+            if (this.reloadBigScreen) {
+              editorManager.off("save-file", this.reloadBigScreen);
+            }
+            if (this.bigScreen){
+              this.bigScreen.remove(true);
+            }
         }
     }//and her is the AcodePlugin class ends
-    
-    
+
+
     if (window.acode) {
         // console.log('inside acode window');
         let i = new LiveServer();
@@ -640,6 +662,8 @@
             //  console.log('runnig the init Function');
             await i.init(o, d, s);
         });
+
+
         acode.setPluginUnmount(e.id, () => {
             i.destroy();
         });

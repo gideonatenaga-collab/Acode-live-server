@@ -122,12 +122,17 @@ You're welcome to inspect, modify, or improve the code as needed.
 ### Close Button
 - Tap to completely close the live server window.
 
+### Chrome button
+- tap to move `Live Server` in a tab 
+- Provides a big screen for better visibiltiy and experience
+
 ---
 
 ## Upcoming Features
 
 - Better UI/UX design
-- Minimize button
+- Preview in Browser button
+- Make Universaly accessible
 - Additional tools and customization options
 
 ---

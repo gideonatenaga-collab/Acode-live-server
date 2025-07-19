@@ -13,7 +13,7 @@
         "id": "liveserver",
         "name": "Live Server",
         "main": "main.js",
-        "version": "2.0.0",
+        "version": "2.0.1",
         "readme": "readme.md",
         "icon": "icon.png",
         "files": [],
@@ -362,7 +362,7 @@
                             jsonData.fileName = fileName;
                             if (!jsonData.port) {
                                 (async () => {
-                                    let livePort = await getLivePortIfAvailable();
+                                    let livePort = await getLivePortIfAvilable();
                                     if (livePort) {
                                         console.log(`live port gotten its ${livePort}`)
                                         jsonData.port = livePort;
@@ -547,34 +547,36 @@
                 }
             }
 
-            async function getLivePortIfAvailable(timeout = 1000) {
-                const portList = [1024, 1025, 1026, 1027, 1028, 1029, 1030, 1031, 1032, 1033, 1034];
-
-                for (const port of portList) {
+            async function getLivePortIfAvilable(timeout = 1000) {
+                let portList = [1024, 1025, 1026, 1027, 1028, 1029, 1030, 1031, 1032, 1033, 1034];
+                for (let port of portList) {
                     const controller = new AbortController();
                     const signal = controller.signal;
 
-                    // Set timeout to abort fetch
-                    const timer = setTimeout(() => controller.abort(), timeout);
+                    // Set a timeout to abort the fetch
+                    const timer = setTimeout(() => {
+                        controller.abort();
+                    }, timeout);
 
                     try {
                         const response = await fetch(`http://localhost:${port}/check`, {
                             method: 'GET',
                             signal: signal
                         });
+                        clearTimeout(timer);
 
-                        clearTimeout(timer); // Clear timer on success/failure
                         if (response.ok) {
-                            this.isServerOnline = true;
-                            return port; // Return live port
+                            return port;
                         }
                     } catch (err) {
-                        clearTimeout(timer); //clear timer
+                        clearTimeout(timer);
+                //        console.log(`Port ${port} failed or timed out:`, err.message);
+                     //   console.clear()
                     }
                 }
-
-                return null; // No live port found
+                return null;
             }
+            
 
 
             ////////////////////))/))////ll/)//////////////

@@ -1,5 +1,8 @@
 # CHANGELOGS
 
+# V 2.0.2
+> fixed server offline error 
+
 # V 2.0.0
 
 ### INTRODUCING `LIVE SERVER 2.0`

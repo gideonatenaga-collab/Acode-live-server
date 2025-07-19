@@ -13,7 +13,7 @@
         "id": "liveserver",
         "name": "Live Server",
         "main": "main.js",
-        "version": "2.0.1",
+        "version": "2.0.2",
         "readme": "readme.md",
         "icon": "icon.png",
         "files": [],
@@ -102,11 +102,11 @@
 
             ///////////////////////////////////////////////////////////////////
             ///INITILIZING ALL EVENT Listeners///////
-            // editorManager.on('save-file', () => {
-            //     ///i have to move it to an seprate function so that it will only listen when its actually needed its efficient use of resources
-            //     ///ill update it later its forcing the windo to relode
-            //     this.reloadFile();
-            // });
+             editorManager.on('save-file', () => {
+                 ///i have to move it to an seprate function so that it will only listen when its actually needed its efficient use of resources
+                 ///ill update it later its forcing the windo to relode
+                 this.reloadFile();
+             });
 
             editorManager.on('switch-file', () => {
                 this.showOrHideIFhtml();

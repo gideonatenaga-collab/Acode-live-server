@@ -1,5 +1,8 @@
 # CHANGELOGS
 
+# 2.0.3
+> used plugin icon as tab icon
+
 # V 2.0.2
 > fixed server offline error 
 

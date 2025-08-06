@@ -13,7 +13,7 @@
         "id": "liveserver",
         "name": "Live Server",
         "main": "main.js",
-        "version": "2.0.2",
+        "version": "2.0.3",
         "readme": "readme.md",
         "icon": "icon.png",
         "files": [],
@@ -41,6 +41,7 @@
 
         async init() {
             console.log("LiveServerPlugin initialized!");
+            acode.addIcon('liveserver', '${this.baseUrl}icon.png');
             // settings.update({
             //     "Live-Server":{
             //         "status": true,
@@ -601,7 +602,7 @@
                         type: 'page',
                         render: true,
                         content: BigScreenContent,
-                        tabIcon: "icon googlechrome",
+                        tabIcon: "icon liveserver",
                     });
                     this.isBigScreenEnabled = true;
                     editorManager.on("save-file", this.reloadBigScreen);

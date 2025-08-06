@@ -41,7 +41,7 @@
 
         async init() {
             console.log("LiveServerPlugin initialized!");
-            acode.addIcon('liveserver', '${this.baseUrl}icon.png');
+            acode.addIcon('liveserver', `${this.baseUrl}icon.png`);
             // settings.update({
             //     "Live-Server":{
             //         "status": true,

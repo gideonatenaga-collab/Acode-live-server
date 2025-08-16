@@ -142,7 +142,7 @@ You're welcome to inspect, modify, or improve the code as needed.
 Special thanks to:
 
 - <a href="https://github.com/bajrangCoder">Raunak Raj</a>
-- <a href="https://github.com/UnschooledGamer">UnschooldGamer</a>
+- <a href="https://tally.so/r/wM4aql</a>
 - <a href="https://github.com/UnknownPro1sCool">?Unknown</a>
 - <a href="https://github.com/MatrixCoder0101">Matricx Coader</a>
 
